@@ -115,8 +115,10 @@ const Configurable = (base, _package) => class TargetConfigBase extends base {
       let packagePath = path.resolve(dirname, 'package.json');
       if (fs.existsSync(packagePath)) {
         let _package = require(packagePath);
-        packageName = _package.name;
-        break;
+        if (_package.name === _package) {
+          packageName = _package.name;
+          break;
+        }
       }
       dirname = path.resolve(dirname, '..');
       if (dirname === '/') {
@@ -127,12 +129,12 @@ const Configurable = (base, _package) => class TargetConfigBase extends base {
       return dirname;
     }
     else {
-      return path.resolve(__dirname, '..');
+      return path.resolve(__dirname, '../..');
     }
   })();
   static needResolution = Symbol('need resolution');
   static basePath = module.parent.parent.path;
-  static configPath = __dirname;
+  static configPath = module.parent.path;
   // delayed resolution of configurations 
   _resolveConfig() {
     for (let config in this) {
