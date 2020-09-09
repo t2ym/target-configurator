@@ -1,0 +1,29 @@
+{
+  "name": "target-configurator",
+  "version": "0.1.0",
+  "description": "Configurator base class as a custom registry for gulp",
+  "main": "index.js",
+  "engines" : {
+    "node" : ">=12.16.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/t2ym/target-configurator.git"
+  },
+  "keywords": [
+    "gulp",
+    "configurator"
+  ],
+  "author": "Tetsuya Mori <t2y3141592@gmail.com>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/t2ym/target-configurator/issues"
+  },
+  "homepage": "https://github.com/t2ym/target-configurator",
+  "dependencies": {
+    "undertaker-registry": "^1.0.1"
+  }
+}
