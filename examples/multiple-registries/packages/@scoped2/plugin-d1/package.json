@@ -1,0 +1,11 @@
+{
+  "name": "@scoped2/plugin-d1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "configurator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-2-Clause"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "multiple-registries",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "json-stringify-safe": "^5.0.1",
+    "target-configurator": "^0.1.4"
+  },
+  "dependencies": {
+    "@scoped/plugin-c1": "file:packages/@scoped/plugin-c1",
+    "@scoped/plugin-c2": "file:packages/@scoped/plugin-c2",
+    "@scoped2/default": "file:packages/@scoped2/default",
+    "@scoped3/package-e": "file:packages/@scoped3/package-e",
+    "package-a": "file:packages/package-a",
+    "package-b": "file:packages/package-b"
+  }
+}
