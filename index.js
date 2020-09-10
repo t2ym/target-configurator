@@ -24,10 +24,13 @@ const Configurable = (base, _package) => class TargetConfigBase extends base {
     return task;
   }
   set(name, fn) {
-    let boundFn = fn.bind(this);
-    boundFn.displayName = fn.displayName;
-    boundFn.description = fn.description;
-    boundFn.flags = fn.flags;
+    let boundFn = fn.__registry ? fn : fn.bind(this);
+    if (!fn.__registry) {
+      if (fn.displayName) { boundFn.displayName = fn.displayName; }
+      if (fn.description) { boundFn.description = fn.description; }
+      if (fn.flags) { boundFn.flags = fn.flags; }
+      boundFn.__registry = this;
+    }
     return super.set(name, boundFn);
   }
   resolveConfiguratorPath(pluginName) {
