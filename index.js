@@ -5,6 +5,7 @@ Copyright (c) 2020 Tetsuya Mori <t2y3141592@gmail.com>. All rights reserved.
 const path = require('path');
 const fs = require('fs');
 const GulpDefaultRegistry = require('undertaker-registry');
+const metadata = require('undertaker/lib/helpers/metadata');
 
 const Configurable = (base, _package) => class TargetConfigBase extends base {
   constructor() {
@@ -94,7 +95,7 @@ const Configurable = (base, _package) => class TargetConfigBase extends base {
           done();
         }, { displayName: `${pluginName} check dependencies` }),
         // Note: task function is bound to this since gulp.series() bypasses registry.set(name, fn)
-        Object.assign(plugin.configurator.call(this, this).bind(this), { displayName: `${pluginName} configurator` }),
+        Object.assign((fn => metadata.has(fn) ? fn : fn.bind(this))(plugin.configurator.call(this, this)), { displayName: `${pluginName} configurator` }),
         Object.assign((done) => {
           this[pluginName] = this[pluginName] || {};
           this[pluginName].done = true;
