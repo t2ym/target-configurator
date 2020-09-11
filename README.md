@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/target-configurator.svg)](https://badge.fury.io/js/thin-hook)
+[![npm version](https://badge.fury.io/js/target-configurator.svg)](https://badge.fury.io/js/target-configurator)
 
 # target-configurator
 
