@@ -75,7 +75,16 @@ const Configurable = (base, _package) => class TargetConfigBase extends base {
   // register gulp task
   task(pluginName) {
     const configuratorPath = this.resolveConfiguratorPath(pluginName);
-    const plugin = require(configuratorPath);
+    let plugin = require(configuratorPath);
+    if (typeof plugin === 'function') { // shortcut method
+      let shortcutPlugin = plugin;
+      plugin = {
+        name: plugin.displayName || plugin.name,
+        init: plugin.init || null,
+        configurator: function (targetConfig) { return shortcutPlugin; },
+        dependencies: plugin.dependencies || [],
+      };
+    }
     if (plugin.name !== pluginName) {
       throw new Error(`task("${pluginName}"): plugin.name === ${plugin.name} does not match`);
     }

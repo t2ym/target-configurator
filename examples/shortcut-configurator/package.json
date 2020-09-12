@@ -1,0 +1,19 @@
+{
+  "name": "shortcut-configurator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "json-stringify-safe": "^5.0.1",
+    "target-configurator": "^0.1.6"
+  },
+  "dependencies": {
+    "shortcut-1": "file:packages/shortcut-1"
+  }
+}
