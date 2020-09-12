@@ -11,7 +11,7 @@
   "devDependencies": {
     "gulp": "^4.0.2",
     "json-stringify-safe": "^5.0.1",
-    "target-configurator": "^0.1.6"
+    "target-configurator": "^0.1.7"
   },
   "dependencies": {
     "shortcut-1": "file:packages/shortcut-1"

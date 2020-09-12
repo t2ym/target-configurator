@@ -1,6 +1,6 @@
 {
   "name": "target-configurator",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Configurator base class as a custom registry for gulp",
   "main": "index.js",
   "engines": {

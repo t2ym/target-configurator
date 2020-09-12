@@ -9,6 +9,13 @@ console.log('targetConfig1: module.parent.id', module.parent.id)
 class TargetConfig1 extends Configurable(GulpDefaultRegistry, 'shortcut-1') {
   static basePath = module.parent.path; // module.parent is gulpfile.js in the base directory
   static configPath = module.path; // Overriding configPath is safe and robust
+  // override this.pre() to check process.cwd() before each task
+  pre(plugin) {
+    super.pre(plugin);
+    if (this.constructor.basePath !== process.cwd()) {
+      throw new Error(`${TargetConfig1.name}: cwd ${process.cwd()} is expected to match with basePath ${this.constructor.basePath}`);
+    }
+  }
   // configure itself step by step
   _configure() {
     super._configure();

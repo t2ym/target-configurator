@@ -72,6 +72,20 @@ const Configurable = (base, _package) => class TargetConfigBase extends base {
     }
     throw new Error(`Configurable.resolveConfiguratorPath: failed to resolve pluginName "${pluginName}"`);
   }
+  pre(plugin) {
+    if (Array.isArray(plugin.dependencies)) {
+      plugin.dependencies.forEach(dependency => {
+        if(!(this[dependency] && this[dependency].done)) {
+          throw new Error(`plugin task "${plugin.name}": dependent task "${dependency}" has not completed`);
+        }
+      });
+    }
+  }
+  post(plugin) {
+    const pluginName = plugin.name;
+    this[pluginName] = this[pluginName] || {};
+    this[pluginName].done = true;
+  }
   // register gulp task
   task(pluginName) {
     const configuratorPath = this.resolveConfiguratorPath(pluginName);
@@ -94,21 +108,24 @@ const Configurable = (base, _package) => class TargetConfigBase extends base {
     return this.gulp.task(pluginName,
       this.gulp.series(
         Object.assign((done) => {
-          if (Array.isArray(plugin.dependencies)) {
-            plugin.dependencies.forEach(dependency => {
-              if(!(this[dependency] && this[dependency].done)) {
-                throw new Error(`plugin task "${pluginName}": dependent task "${dependency}" has not completed`);
-              }
-            });
+          let result = this.pre(plugin);
+          if (result instanceof Promise) {
+            result.then(() => done(), (err) => done(err));
           }
-          done();
+          else {
+            done();
+          }
         }, { displayName: `${pluginName} check dependencies` }),
         // Note: task function is bound to this since gulp.series() bypasses registry.set(name, fn)
         Object.assign((fn => metadata.has(fn) ? fn : fn.bind(this))(plugin.configurator.call(this, this)), { displayName: `${pluginName} configurator` }),
         Object.assign((done) => {
-          this[pluginName] = this[pluginName] || {};
-          this[pluginName].done = true;
-          done();
+          let result = this.post(plugin);
+          if (result instanceof Promise) {
+            result.then(() => done(), (err) => done(err));
+          }
+          else {
+            done();
+          }
         }, { displayName: `${pluginName} done` }),
       )
     );

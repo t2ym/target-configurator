@@ -63,6 +63,12 @@ const { Configurable, GulpDefaultRegistry } = require('target-configurator');
 class TargetConfig extends Configurable(GulpDefaultRegistry, 'source-package') {
   static basePath = module.parent.path; // module.parent is gulpfile.js in the base directory
   static configPath = module.path; // Overriding configPath is safe and robust
+  pre(plugin) { // optionally confirm process.cwd() maches with the base path
+    super.pre(plugin);
+    if (this.constructor.basePath !== process.cwd()) {
+      throw new Error(`${TargetConfig1.name}: cwd ${process.cwd()} is expected to match with basePath ${this.constructor.basePath}`);
+    }
+  }
   _configure() {
     super._configure();
     Object.assign(this.path, {
@@ -89,6 +95,7 @@ module.exports = targetConfig;
 ```
 
 ## `source-package/plugins/plugin-name/configurator.js` - configurator
+- Full-featured plugin
 ```js
 // example configurator with configurable 2-pass source file generation
 const path = require('path');
@@ -155,6 +162,31 @@ module.exports = {
   name: pluginName,
   dependencies: [],
 };
+```
+
+- Shortcut plugin exporting a task function directly
+```js
+const fs = require('fs');
+module.exports = function cwd_plugin (done) { // Arrow functions are not supported
+  // cwd is gurranteed to be this.path.base in overridden this.pre()
+  console.log(cwd_plugin.name, this.path, JSON.parse(fs.readFileSync(`${this.path.config}/${cwd_plugin.name}/cwd_plugin-config.json`))['cwd_plugin-config']);
+  done();
+}
+```
+
+- Shortcut plugin exporting a task function with options
+```js
+const path = require('path');
+
+const pluginName = 'shortcut-plugin-2';
+
+module.exports = Object.assign(function shortcut_plugin2 (done) {
+  console.log(pluginName, this.path, require(path.resolve(this.path.base, this.path.config, pluginName, 'shortcut-plugin-2-config.js'))['shortcut-plugin-2-config']);
+  done();
+}, {
+  displayName: pluginName,
+  dependencies: [ 'shortcut_plugin1' ],
+});
 ```
 
 # License
