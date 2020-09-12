@@ -63,7 +63,7 @@ const { Configurable, GulpDefaultRegistry } = require('target-configurator');
 class TargetConfig extends Configurable(GulpDefaultRegistry, 'source-package') {
   static basePath = module.parent.path; // module.parent is gulpfile.js in the base directory
   static configPath = module.path; // Overriding configPath is safe and robust
-  pre(plugin) { // optionally confirm process.cwd() maches with the base path
+  pre(plugin) { // optionally confirm process.cwd() matches with the base path
     super.pre(plugin);
     if (this.constructor.basePath !== process.cwd()) {
       throw new Error(`${TargetConfig1.name}: cwd ${process.cwd()} is expected to match with basePath ${this.constructor.basePath}`);
