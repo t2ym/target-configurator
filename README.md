@@ -1,6 +1,8 @@
 [![npm version](https://badge.fury.io/js/target-configurator.svg)](https://badge.fury.io/js/target-configurator)
 
-![Transistor Logo](docs/Transistor.svg)
+<p align="center">
+<img src="docs/Transistor.svg?sanitize=true" width="400px">
+</p>
 
 # target-configurator
 
