@@ -1,7 +1,7 @@
 [![npm version](https://badge.fury.io/js/target-configurator.svg)](https://badge.fury.io/js/target-configurator)
 
 <p align="center">
-<img src="docs/Transistor.svg?sanitize=true" width="400px">
+<img src="https://raw.githubusercontent.com/t2ym/target-configurator/master/docs/Transistor.svg?sanitize=true" width="400px">
 </p>
 
 # target-configurator
