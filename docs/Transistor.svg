@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <circle style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 5px;" cx="249.01" cy="254.26" r="81.73" transform="matrix(1.082184, 0, 0, 1.086193, 0.013709, -8.973123)"/>
+  <line style="stroke: rgb(0, 0, 0); stroke-width: 5px;" x1="233.62" y1="212.65" x2="231.98" y2="317.17"/>
+  <line style="stroke: rgb(0, 0, 0); stroke-width: 5px;" x1="300.32" y1="109.6" x2="299.99" y2="183.98"/>
+  <line style="stroke: rgb(0, 0, 0); stroke-width: 5px;" x1="300.63" y1="183" x2="233.46" y2="251.81"/>
+  <line style="stroke: rgb(0, 0, 0); stroke-width: 5px;" x1="298.01" y1="345.68" x2="232.15" y2="279.49"/>
+  <path d="M 310.94 295.15 L 332.5 332.3 L 289.37 332.3 L 310.94 295.15 Z" style="" transform="matrix(-0.268919, -0.963163, 0.963163, -0.268919, 59.281841, 716.870117)" bx:shape="triangle 289.37 295.15 43.13 37.15 0.5 0 1@8bfba2b5"/>
+  <line style="stroke: rgb(0, 0, 0); stroke-width: 5px;" x1="300.28" y1="348.73" x2="299.95" y2="423.11"/>
+  <line style="stroke: rgb(0, 0, 0); stroke-width: 5px;" x1="230.51" y1="266.49" x2="120.42" y2="266.49" transform="matrix(-1, 0, 0, -1, 350.929993, 532.97998)"/>
+  <circle style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 5px;" cx="272.28" cy="69.39" r="21.26" transform="matrix(0.537647, 0, 0, 0.553059, 153.757034, 60.174438)"/>
+  <circle style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 5px;" cx="272.28" cy="69.39" r="21.26" transform="matrix(0.537647, 0, 0, 0.553059, 153.395859, 396.364319)"/>
+  <circle style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 5px;" cx="272.28" cy="69.39" r="21.26" transform="matrix(0.537647, 0, 0, 0.553059, -37.609383, 227.622498)"/>
+</svg>

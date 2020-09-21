@@ -1,5 +1,7 @@
 [![npm version](https://badge.fury.io/js/target-configurator.svg)](https://badge.fury.io/js/target-configurator)
 
+![Transistor Logo](docs/Transistor.svg)
+
 # target-configurator
 
 ## [Example Usage in `thin-hook`](https://github.com/t2ym/thin-hook/blob/module/gulpfile.js)
