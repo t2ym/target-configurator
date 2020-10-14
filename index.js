@@ -209,8 +209,11 @@ const Configurable = (base, _package) => class TargetConfigBase extends base {
   mapper(mappings, _path) {
     let result;
     for (let [ original, mapped ] of mappings) {
-      if (_path.startsWith(original + '/')) {
-        result = path.join(mapped, _path.substring(original.length + '/'.length));
+      if (!original.endsWith('/')) {
+        original += '/';
+      }
+      if (_path.startsWith(original)) {
+        result = path.join(mapped || '/', _path.substring(original.length));
         break;
       }
     }
