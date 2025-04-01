@@ -38,6 +38,19 @@ const Configurable = (base, _package) => class TargetConfigBase extends base {
     let configuratorJs = 'configurator.js';
     let pluginConfiguratorPath = path.resolve(this.constructor.packagePath, this.path.plugins, pluginName, configuratorJs); // local
     if (fs.existsSync(pluginConfiguratorPath)) {
+      let pluginPackageJsonPath = path.resolve(this.constructor.packagePath, this.path.plugins, pluginName, 'package.json');
+      if (fs.existsSync(pluginPackageJsonPath)) {
+        let pluginPackageJson = require(pluginPackageJsonPath);
+        let packageName = pluginPackageJson.name;
+        let _pluginConfiguratorPath;
+        try {
+          _pluginConfiguratorPath = require.resolve(path.join(packageName, configuratorJs));
+          if (fs.existsSync(_pluginConfiguratorPath)) {
+            pluginConfiguratorPath = _pluginConfiguratorPath;
+          }
+        }
+        catch (e) {}
+      }
       return pluginConfiguratorPath;
     }
     if (pluginName.startsWith('@')) { // scoped
